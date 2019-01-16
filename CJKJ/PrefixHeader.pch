@@ -1,0 +1,82 @@
+//
+//  PrefixHeader.pch
+//  CJKJ
+//
+//  Created by cw-006 on 2018/12/29.
+//  Copyright © 2018 cw-006. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "YX_ProgressHUD.h"
+#import "PPNetworkHelper.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <Masonry/Masonry.h>
+#import "Singleten.h"
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+//用户名 密码
+#define Account          @"account"
+#define CJ_Account   [[NSUserDefaults standardUserDefaults] objectForKey:Account]
+#define Password         @"password"
+#define CJ_Password   [[NSUserDefaults standardUserDefaults] objectForKey:Password]
+
+
+//登录退出
+#define Login            @"isLogin"
+#define Logout           @"logout"
+#define CJ_isLogin  [[NSUserDefaults standardUserDefaults] boolForKey:Login]
+
+// block
+#define weakify(var) \
+try {} @catch (...) {} \
+__weak __typeof__(var) var ## _weak = var;
+
+
+#define strongify(var) \
+try {} @catch (...) {} \
+__strong __typeof__(var) var = var ## _weak;
+
+#define STATUS_BAR_HIGHT CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
+#define SAFE_AREA_BOTTOM (STATUS_BAR_HIGHT > 20 ? 34.0 : 0.0)
+
+//尺寸
+#define screen [UIScreen mainScreen].bounds
+#define VIEW_SIZE  self.view.frame.size//self.view的尺寸
+#define DT_IS_IPHONEX_XS
+
+//导航栏高度
+#define TopBarHeight 64
+#define TabbarHeight 49
+
+#define HEIGHT   [UIScreen mainScreen].bounds.size.height
+#define WIDTH    [UIScreen mainScreen].bounds.size.width
+
+#define IPHON4  [UIScreen mainScreen].bounds.size.height == 480
+#define IPHON5  [UIScreen mainScreen].bounds.size.height == 568
+#define IPHON6  [UIScreen mainScreen].bounds.size.height == 667
+#define IPHON6P  [UIScreen mainScreen].bounds.size.height == 736
+#define IPHONEX  [UIScreen mainScreen].bounds.size.height == 812
+#define IPHONEXR  [UIScreen mainScreen].bounds.size.height == 896
+
+//#define IPHONEX_SET (IPHONEX||IPHONEXR)
+#define IPHONEX_SET (IPHONEX||IPHONEXR)
+//颜色
+#define RGBHexColor(hexValue, alphaValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16))/255.0 green:((float)((hexValue & 0xFF00) >> 8))/255.0 blue:((float)(hexValue & 0xFF))/255.0 alpha:alphaValue]
+#define ZXColor(r,g,b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+//字体
+#define ControlFont(e) [UIFont systemFontOfSize:e]
+#define ControlBoldFont(e) [UIFont systemFontOfNewSize:e]
+
+#define WIDTHsCALE  WIDTH/375
+#define HEIGHTsCALE HEIGHT/812
+
+#endif /* PrefixHeader_pch */
